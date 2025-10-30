@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href ="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <div id="container">
+        <div id="name-modal">
+            <div>
+                <h2>Welcome!</h2>
+                <p>What should we call you?</p>
+                <input type="text" id="name-input" placeholder="E.g., Alex">
+                <button id="save-name-btn">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </div>
+    <main id="main-content" class="hidden">
+        <div class="nav">
+            <div class="container1">
+                <img src="orbit3.svg" alt="">
+                <span class = "orbit" >ORBIT </span>
+            </div>
+            <div class="container2">
+                <button class="dark">
+                    <img class = "moon" src = "pics/moon.svg">
+                </button>
+                <button class="background">Background</button>
+
+            </div>
+            
+            
+        </div>
+        <div class="quote">
+            <p>Let every moment revolve around your goals</p>
+        </div>
+        
+        <header>
+                <h1 id="greeting">Good morning, User!</h1>
+        </header>
+
+
+        
+        <div class = "box-container1">
+            <div class="box1">
+                <p>Task List</p>
+                <div class="line"></div>
+                <input type="text" id="task-input" placeholder="Add a new task">
+                <button id="add-btn" class="add">Add</button>
+                <div id="task-container"></div>
+            </div>
+            <div class="box2">
+                <p>Time Tracker</p>
+                <div class="line"></div>
+                <h2 id="timer-display">00:00:00</h2>
+                <button class="start">Start</button>
+                <button class="stop">Stop</button>
+                <button class="reset">Reset</button>
+            </div>
+        </div>
+
+        <div class = "box-container2">
+            <div class="box3">
+                <p>Statistics</p>
+                <div class="line"></div>
+                <ul>
+                    <li>Total time today:</li>
+                    <li>Daily Average(this week)</li>
+                </ul>
+            </div>
+        </div>
+        
+        
+
+    </main>
+    <script  src="input.js"></script>
+</body>
+</html>

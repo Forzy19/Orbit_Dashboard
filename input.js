@@ -9,7 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const addBtn = document.getElementById('add-btn');
         const taskInput = document.getElementById('task-input');
         const taskContainer = document.getElementById('task-container');
+        const startBtn = document.querySelector('.start');
+        const stopBtn = document.querySelector('.stop');
+        const resetBtn = document.querySelector('.reset');
+        const timerDisplay = document.getElementById('timer-display');
+        const totalTodayEl = document.getElementById('total-today');
+        const weeklyAverageEl = document.getElementById('weekly-average');
+        let timerInterval = null;
+        let elapsedTime = 0; 
         let username='';
+        function updatetimerdisplay(){
+            let hrs = Math.floor(elapsedTime / 3600);
+            let mins = Math.floor((elapsedTime % 3600) / 60);
+            let secs = elapsedTime % 60;
+            timerDisplay.textContent = `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        function updateStats() {
+            const box3 = document.querySelector('.box3 ul');
+            box3.innerHTML = `<li>Total time today: ${totalTimeToday}s</li><li>Total time spent this week: ${totalTimeToday}s</li>`;
+        }
         function addtask(){
             const taskText = taskInput.value.trim();
             if (taskText === '') {
@@ -43,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem(key, JSON.stringify(value));
                 }
         };
+        let totalTimeToday = storage.get('total_time_today') || 0;
         function init(){
             const savedName = storage.get('dashboard_user');
                 if (savedName) {
@@ -87,6 +106,33 @@ document.addEventListener('DOMContentLoaded', () => {
         taskInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') addtask();
         });
+        startBtn.addEventListener('click', () => {
+                if (timerInterval) return; 
+                timerInterval = setInterval(() => {
+                    elapsedTime++;
+                    updatetimerdisplay();
+                    }, 1000);
+        });
+        stopBtn.textContent='Pause';
+        stopBtn.addEventListener('click', () => {
+            if (!timerInterval) return;
+            clearInterval(timerInterval);
+            timerInterval = null;
+        });
+        resetBtn.addEventListener('click', () => {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            totalTimeToday += elapsedTime;
+            storage.set('total_time_today', totalTimeToday);
+            elapsedTime = 0;
+            updatetimerdisplay();
+            updateStats();
+        });
+
+    // Load stats when page starts
+        updateStats();
+        updatetimerdisplay();
+        
 
 
         
