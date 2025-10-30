@@ -19,12 +19,32 @@
             width: 600px;
             background-color: rgb(255,255,255,0.1);
             margin: 10px;
-            color: white;
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(5px);
             border-radius: 40px;
+            padding-top: 10px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 10px;
             
 
         }
+        #task {
+            font-family: Roboto Mono;
+            font-size: 23px;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 15px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            
+            
+        }
+        #task-input {
+            
+            margin-top: 5px;
+        }
+        
         .box2{
             height: 300px;
             width: 600px;
@@ -79,6 +99,8 @@
         .orbit{
             font-size: 40px;
             color: white;
+            font-weight: bold;
+            padding: 5px;
         }
         .dark{
             border-radius: 50px;
@@ -111,5 +133,13 @@
             display:flex;
             justify-content: space-around;
         }
-
+        .line {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: solid;
+            border-width: 0.5px;
+            border-color: rgba(240, 248, 255, 0.3);
+            width: 550px;
+        }
       
