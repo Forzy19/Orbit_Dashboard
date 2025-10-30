@@ -10,17 +10,21 @@
             background-attachment: fixed;
             background-color: #fff;
             font-family: Roboto Mono;
+            padding:25px 50px;
+            padding-bottom: 100px;
         }
         .hidden{
             display: none;
+            
         }
         .box1{
-            height: 300px;
+            height: 450px;
             width: 600px;
-            background-color: rgb(255,255,255,0.1);
+            background-color: rgba(255,255,255,0.1);
             margin: 10px;
             backdrop-filter: blur(5px);
             border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 10px;
             padding-left: 25px;
             padding-right: 25px;
@@ -48,11 +52,12 @@
         #task-input {
             border: none;
             border-radius: 15px;
-            padding: 15px 20px;
+            padding: 16px 20px;
+            font-size: 17px;
             background-color: rgb(255,255,255,0.5);
             backdrop-filter: blur(5px);
-            margin-top: 5px;
-            vertical-align:auto;
+            
+            
             
         }
         #task-input::placeholder {
@@ -71,18 +76,20 @@
             color: white;
             font-size: 17px;
             font-family: Roboto Mono;
-            padding-left:20px;
-            padding-right:20px;
+            padding-left: 25px;
+            padding-right:25px;
             padding-top:15px;
             padding-bottom:15px;
+            margin-left: 10px;
             transition: 
             background-position 0.4s ease-out,
             box-shadow 0.4s ease-out,
-            transform 0.3s ease-out;
+            transform 0.3s ease-out,
+            border 0.4s ease-in-out;
             background-size: 200% 100%;
             background-position: 0 0;
             cursor: pointer;
-            vertical-align:auto;
+            
         }
         .add:hover {
             background-position: 100% 0 ;
@@ -90,17 +97,39 @@
             font-weight: 600;
             transform: scale(1.05);
             transition: 
-            color 0.3s, transform 0.3s, background-position 0.5s, font-weight 0.3s ;
+            color 0.3s, transform 0.3s, background-position 0.5s, font-weight 0.3s;
             
         }
+        .add:active {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 0 rgba(255,255,255,0);
+            transform: scale(0.95);
+        }
+        #task-container {
+            color: white;
+            margin-top: 10px;
+            
+        }   
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 17px;
+            padding-bottom: 15px;
+        }
+        .point {
+            font-size: 1.3em;
+        }
+        
         .box2{
             
-            height: 300px;
+            height: 450px;
             width: 600px;
-            background-color: rgb(255,255,255,0.1);
+            background-color: rgba(255,255,255,0.1);
             margin: 10px;
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(5px);
             border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
             padding-top:10px;
             padding-left: 25px;
@@ -111,12 +140,13 @@
         }
             
         .box3{
-            height: 300px;
+            height: 200px;
             width: 600px;
-            background-color: rgb(255,255,255,0.1);
+            background-color: rgba(255,255,255,0.1);
             margin: 10px;
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(5px);
             border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
             padding-top:10px;
             padding-left: 25px;
@@ -129,7 +159,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 40px;
+            
         }
         .container1{
             display: flex;
@@ -156,13 +186,32 @@
             justify-content: center;
             align-items: center;
         }
+        
         .delete-btn {
-        background: red;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        padding: 2px 6px;
+        background: linear-gradient( 
+                135deg,
+                rgba(149, 75, 14, 0.85),
+                rgba(77, 41, 7, 0.7),
+                rgba(209, 110, 4, 0.6),
+                rgba(80, 40, 10, 0.8));
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 17px;
+            font-family: Roboto Mono;
+            
+            padding-left:20px;
+            padding-right:20px;
+            padding-top:10px;
+            padding-bottom:10px;
+            transition: 
+            background-position 0.4s ease-out,
+            box-shadow 0.4s ease-out,
+            transform 0.3s ease-out;
+            background-size: 200% 100%;
+            background-position: 0 0;
+            cursor: pointer;
+            
         }
         ul li{
             list-style: none;
@@ -208,20 +257,13 @@
         .box-container1{
             display:flex;
             justify-content: space-around;
+            padding-bottom: 15px ;
         }
         .box-container2{
             display:flex;
             justify-content: space-around;
         }
-        .line {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: solid;
-            border-width: 0.5px;
-            border-color: rgba(240, 248, 255, 0.3);
-            width: 550px;
-        }        
+        
         .time-tracker{
             font-family: Roboto Mono;
             font-size: 23px;

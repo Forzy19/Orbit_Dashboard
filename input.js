@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const taskDiv = document.createElement('div');
             taskDiv.classList.add('task');
-            taskDiv.innerHTML = `<span><strong>Task:</strong>${taskText}</span>`;
+            taskDiv.innerHTML = `<span class="point"><strong>\u2022</strong>  ${taskText}</span>`;
             const deleteBtn = document.createElement('button');
             deleteBtn.textContent = 'Delete';
             deleteBtn.classList.add('delete-btn');
