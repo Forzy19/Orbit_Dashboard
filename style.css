@@ -22,18 +22,22 @@
             color: white;
             backdrop-filter: blur(1px);
             border-radius: 40px;
-            
-
+                       
         }
         .box2{
+            
             height: 300px;
             width: 600px;
             background-color: rgb(255,255,255,0.1);
             margin: 10px;
             backdrop-filter: blur(1px);
-            border-radius: 0px;
+            border-radius: 30px;
+            text-align: center;
+            padding-top:10px;
+            
 
         }
+            
         .box3{
             height: 300px;
             width: 600px;
@@ -42,7 +46,7 @@
             backdrop-filter: blur(1px);
             border-radius: 30px;
 
-        }
+        }    
         .nav{
             display: flex;
             justify-content: space-between;
@@ -111,5 +115,38 @@
             display:flex;
             justify-content: space-around;
         }
-
+        .time-tracker{
+            color: white;
+            font-weight:700;
+            font-size:23px;
+            text-align: center;
+            margin-bottom:50px;
+            
+        }    
+        #timer-display{
+            color: white;
+            margin-bottom: 40px;
+            font-size: 50px;
+        }
+        .start{
+            background-color: rgb(255,255,255,0.3);
+            border: none;
+            border-radius: 2px;
+            color: white
+        }
+        .stop{
+            background-color: rgb(255,255,255,0.3);
+            border: none;
+            border-radius: 2px;
+            color: white
+        }
+    
+        .reset{
+            background-color: rgb(255,255,255,0.3);
+            border: none;
+            border-radius: 2px;
+            color: white
+        }
+    
+    
       
