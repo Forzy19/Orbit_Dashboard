@@ -28,6 +28,11 @@
             
 
         }
+        /* .input-container{
+            display: flex;
+            align-items: center;
+            
+        } */
         #task {
             font-family: Roboto Mono;
             font-size: 23px;
@@ -41,10 +46,53 @@
             
         }
         #task-input {
-            
+            border: none;
+            border-radius: 15px;
+            padding: 15px 20px;
+            background-color: rgb(255,255,255,0.5);
+            backdrop-filter: blur(5px);
             margin-top: 5px;
+            vertical-align:auto;
+            
         }
-        
+        #task-input::placeholder {
+            color: rgba(0, 0, 0, 0.8);
+            font-size: 17px;
+        }
+        .add{
+            background: linear-gradient( 
+                135deg,
+                rgba(149, 75, 14, 0.85),
+                rgba(77, 41, 7, 0.7),
+                rgba(209, 110, 4, 0.6),
+                rgba(80, 40, 10, 0.8));
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 17px;
+            font-family: Roboto Mono;
+            padding-left:20px;
+            padding-right:20px;
+            padding-top:15px;
+            padding-bottom:15px;
+            transition: 
+            background-position 0.4s ease-out,
+            box-shadow 0.4s ease-out,
+            transform 0.3s ease-out;
+            background-size: 200% 100%;
+            background-position: 0 0;
+            cursor: pointer;
+            vertical-align:auto;
+        }
+        .add:hover {
+            background-position: 100% 0 ;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            transform: scale(1.05);
+            transition: 
+            color 0.3s, transform 0.3s, background-position 0.5s, font-weight 0.3s ;
+            
+        }
         .box2{
             
             height: 300px;
@@ -71,18 +119,27 @@
         .nav{
             display: flex;
             justify-content: space-between;
-            align-items: center
-            ;
+            align-items: center;
+            padding: 10px 40px;
         }
         .container1{
             display: flex;
             justify-content: center;
             align-items: center;
+            /* padding-left: 40px; */
+            transition: transform 0.5s ease-out, text-shadow 0.5s ease-out;
+        }
+        .container1:hover {
+            transform: scale(1.2);
+        }
+        .container1:hover>.orbit:hover {
+            text-shadow: 2px 2px 8px rgba(255,255,255,0.5);
         }
         .container2{
             display: flex;
             justify-content: center;
             align-items: center;
+            /* padding-right: 40px; */
             
         }
         header{
@@ -104,9 +161,17 @@
         .orbit{
             font-size: 40px;
             color: white;
-            font-weight: bold;
-            padding: 5px;
+            font-weight: 700;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: text-shadow 0.5s ease-out;
+            
         }
+        .orbit-icon {
+            scale: 1.25;
+            padding-top: 3px;
+        }
+        
         .dark{
             border-radius: 50px;
             border: none;
@@ -163,7 +228,7 @@
             background-color: rgb(255,255,255,0.3);
             border: none;
             border-radius: 2px;
-            color: white
+            color: white;
         }
         .stop{
             background-color: rgb(255,255,255,0.3);
