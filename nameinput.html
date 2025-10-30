@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+        .hidden{
+            display: none;
+        }
+        .box1{
+            height: 300px;
+            width: 600px;
+            background-color: red;
+            margin: 10px;
+            color: white;
+
+        }
+        .box2{
+            height: 300px;
+            width: 600px;
+            background-color: red;
+            margin: 10px;
+
+        }
+        .box3{
+            height: 300px;
+            width: 600px;
+            background-color: red;
+            margin: 10px;
+
+        }
+        .nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+            ;
+        }
+        .container1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .delete-btn {
+        background: red;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        padding: 2px 6px;
+        }
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="name-modal">
+            <div>
+                <h2>Welcome!</h2>
+                <p>What should we call you?</p>
+                <input type="text" id="name-input" placeholder="E.g., Alex">
+                <button id="save-name-btn">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </div>
+    <main id="main-content" class="hidden">
+        <div class="nav">
+            <div class="container1">
+                <img src="orbit.svg" alt="">
+                <span class="web-name">Orbit</span>
+            </div>
+            <div class="container2">
+                <button class="dark">moon</button>
+                <button class="background">Background</button>
+
+            </div>
+            
+            
+        </div>
+        <div class="quote"><span>Let the moment revolve arouund your goals</span>
+        </div>
+        
+        <header>
+                <h1 id="greeting">Good morning, User!</h1>
+        </header>
+        <div class="box1">
+            <p>Task List</p>
+            <div class="line"></div>
+            <input type="text" id="task-input" placeholder="Add a new task">
+            <button id="add-btn" class="add">Add</button>
+            <div id="task-container"></div>
+        </div>
+        <div class="box2">
+            <p>Time Tracker</p>
+            <div class="line"></div>
+            <button class="start">Start</button>
+            <button class="stop">Stop</button>
+            <button class="reset">Reset</button>
+        </div>
+        <div class="box3">
+            <p>Statistics</p>
+            <div class="line"></div>
+            <ul>
+                <li>Total time today:</li>
+                <li>Daily Average(this week)</li>
+            </ul>
+        </div>
+
+    </main>
+    <script  src="input.js"></script>
+</body>
+</html>
