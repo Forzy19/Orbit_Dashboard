@@ -55,6 +55,9 @@
             border-radius: 30px;
             text-align: center;
             padding-top:10px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 10px;
             
 
         }
@@ -66,6 +69,12 @@
             margin: 10px;
             backdrop-filter: blur(1px);
             border-radius: 30px;
+            text-align: center;
+            padding-top:10px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 10px;
+
 
         }    
         .nav{
@@ -119,6 +128,7 @@
             border-radius: 50px;
             margin-left: 20px;
             padding: 13px;
+            
 
         }
         .moon{
@@ -146,12 +156,17 @@
             border-width: 0.5px;
             border-color: rgba(240, 248, 255, 0.3);
             width: 550px;
-        }        .time-tracker{
+        }        
+        .time-tracker{
+            font-family: Roboto Mono;
+            font-size: 23px;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 15px;
             color: white;
-            font-weight:700;
-            font-size:23px;
-            text-align: center;
-            margin-bottom:50px;
+            display: flex;
+            justify-content: center;
+
             
         }    
         #timer-display{
@@ -160,24 +175,103 @@
             font-size: 50px;
         }
         .start{
-            background-color: rgb(255,255,255,0.3);
+            background: linear-gradient( 
+                135deg,
+                rgba(149, 75, 14, 0.85),
+                rgba(77, 41, 7, 0.7),
+                rgba(209, 110, 4, 0.6),
+                rgba(80, 40, 10, 0.8));
             border: none;
-            border-radius: 2px;
-            color: white
+            border-radius: 30px;
+            color: white;
+            font-size: 17px;
+            font-family: Roboto Mono;
+            margin-right:20px;
+            padding:5px;
+            background-size: 200% 100%;
+            background-position: 0 0;
+            cursor: pointer;
+            
+
         }
         .stop{
-            background-color: rgb(255,255,255,0.3);
+            background: linear-gradient( 
+                135deg,
+                rgba(149, 75, 14, 0.85),
+                rgba(77, 41, 7, 0.7),
+                rgba(209, 110, 4, 0.6),
+                rgba(80, 40, 10, 0.8));
             border: none;
-            border-radius: 2px;
-            color: white
+            border-radius: 30px;
+            color: white;
+            font-size: 17px;
+            font-family: Roboto Mono;
+            margin-right:20px;
+            padding:5px;
+            background-size: 200% 100%;
+            background-position: 0 0;
+            cursor: pointer;
+            
         }
     
         .reset{
-            background-color: rgb(255,255,255,0.3);
+            background: linear-gradient( 
+                135deg,
+                rgba(149, 75, 14, 0.85),
+                rgba(77, 41, 7, 0.7),
+                rgba(209, 110, 4, 0.6),
+                rgba(80, 40, 10, 0.8));
             border: none;
-            border-radius: 2px;
-            color: white
+            border-radius: 30px;
+            color: white;
+            font-size: 17px;
+            font-family: Roboto Mono;
+            padding:5px;
+            background-size: 200% 100%;
+            background-position: 0 0;
+            cursor: pointer;
+
         }
+        .start:hover, .stop:hover, .reset:hover{
+            background-position: 100% 0 ;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            transform: scale(1.05);
+            transition: 
+                  transform 0.3s, background-position 0.5s, font-weight 0.3s ;
+            cursor: pointer;
+        }
+        .start,.stop,.reset{
+            padding-left:13px;
+            padding-right:13px;
+            padding-top:10px;
+            padding-bottom:10px;
+            transition: 
+                background-position 0.4s ease-out,
+                box-shadow 0.4s ease-out,
+                transform 0.3s ease-out;
+
+        }
+        .statistics{
+            font-family: Roboto Mono;
+            font-size: 23px;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 15px;
+            color: white;
+            display: flex;
+            justify-content: center;
+
+        }
+        ul{
+            color: white;
+        }
+        header{
+            color: white;
+        }
+
+        
+   
     
     
       
