@@ -1,9 +1,8 @@
 
         body{
-         
             background-image: 
-                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url("cosmic-symmetry-3840x2160-20464.jpg");
+            linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+            url("cosmic-symmetry-3840x2160-20464.jpg");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;

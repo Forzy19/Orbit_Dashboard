@@ -18,36 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let timerInterval = null;
         let elapsedTime = 0; 
         let username='';
-        function updatetimerdisplay(){
-            let hrs = Math.floor(elapsedTime / 3600);
-            let mins = Math.floor((elapsedTime % 3600) / 60);
-            let secs = elapsedTime % 60;
-            timerDisplay.textContent = `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
-        function updateStats() {
-            const box3 = document.querySelector('.box3 ul');
-            box3.innerHTML = `<li>Total time today: ${totalTimeToday}s</li><li>Total time spent this week: ${totalTimeToday}s</li>`;
-        }
-        function addtask(){
-            const taskText = taskInput.value.trim();
-            if (taskText === '') {
-                alert('Please enter a task!');
-                return;
-            }
-            const taskDiv = document.createElement('div');
-            taskDiv.classList.add('task');
-            taskDiv.innerHTML = `<span class="point"><strong>\u2022</strong>  ${taskText}</span>`;
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = 'Delete';
-            deleteBtn.classList.add('delete-btn');
-            deleteBtn.addEventListener('click', () => {
-                taskDiv.remove();
-            });
-            taskDiv.appendChild(deleteBtn);
-            taskContainer.appendChild(taskDiv);
-            taskInput.value='';
-        }
-
         const storage = {
                 get: (key) => {
                     const item = localStorage.getItem(key);
@@ -61,6 +31,57 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem(key, JSON.stringify(value));
                 }
         };
+        function updatetimerdisplay(){
+            let hrs = Math.floor(elapsedTime / 3600);
+            let mins = Math.floor((elapsedTime % 3600) / 60);
+            let secs = elapsedTime % 60;
+            timerDisplay.textContent = `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        function updateStats() {
+            const box3 = document.querySelector('.box3 ul');
+            box3.innerHTML = `<li>Total time today: ${totalTimeToday}s</li><li>Total time spent this week: ${totalTimeToday}s</li>`;
+        }
+        function saveTasks() {
+            const tasks = [];
+            document.querySelectorAll('.task span').forEach((span) => {
+            tasks.push(span.textContent.replace('•', '').trim());
+            });
+            storage.set('task_list', tasks);
+        }
+        function loadTasks() {
+            const tasks = storage.get('task_list') || [];
+            tasks.forEach((taskText) => {
+                createTaskElement(taskText);
+            });
+        }
+        function createTaskElement(taskText) {
+            const taskDiv = document.createElement('div');
+            taskDiv.classList.add('task');
+            taskDiv.innerHTML = `<span class="point"><strong>•</strong> ${taskText}</span>`;
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.classList.add('delete-btn');
+            deleteBtn.addEventListener('click', () => {
+                taskDiv.remove();
+                saveTasks(); // Update localStorage after deletion
+            });
+            taskDiv.appendChild(deleteBtn);
+            taskContainer.appendChild(taskDiv);
+        }
+
+
+        function addtask(){
+            const taskText = taskInput.value.trim();
+            if (taskText === '') {
+                alert('Please enter a task!');
+                return;
+            }
+            createTaskElement(taskText);
+            taskInput.value = '';
+            saveTasks();
+        }
+
+        
         let totalTimeToday = storage.get('total_time_today') || 0;
         function init(){
             const savedName = storage.get('dashboard_user');
@@ -76,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.classList.add('hidden');
                 mainContent.classList.remove('hidden');
                 updateGreeting();
+                loadTasks();
         }
         function updateGreeting() {
                 const hour = new Date().getHours();
