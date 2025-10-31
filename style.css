@@ -12,43 +12,6 @@
             padding-bottom: 100px;
             transition: background-image 0.5s ease-in-out;
         }
-        body.theme1 .theme-btn{ 
-            
-            transition: background-position 0.4s ease-out;
-        }
-        body.theme2 .theme-btn{
-            background: 
-            linear-gradient( 
-                135deg,
-                rgba(57, 14, 149, 0.878),
-                rgba(123, 14, 107, 0.7),
-                rgba(11, 4, 209, 0.6),
-                rgba(101, 6, 94, 0.8));
-            transition: background-position 0.4s ease-out;
-
-        }
-        body.theme1 .delete-btn{
-            background: 
-            linear-gradient( 
-                135deg,
-                rgba(255, 0, 144, 0.878),
-                rgba(255, 0, 0, 0.7),
-                rgba(255, 0, 93, 0.6),
-                rgba(255, 0, 238, 0.8));
-
-
-        }
-        body.theme2 .delete-btn{
-            background: 
-            linear-gradient( 
-                135deg,
-                rgba(72, 255, 0, 0.878),
-                rgba(26, 255, 0, 0.7),
-                rgba(51, 255, 0, 0.6),
-                rgba(26, 255, 0, 0.8));
-        }
-        
-
         body::before {
             content: "";
             position: fixed;
