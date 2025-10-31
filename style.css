@@ -8,7 +8,7 @@
             background-position: center center;
             background-size: cover;
             background-attachment: fixed;
-            background-color: #fff;
+            background-color: black;
             font-family: Roboto Mono;
             padding:25px 50px;
             padding-bottom: 100px;
@@ -243,8 +243,15 @@
         }    
         .nav{
             display: flex;
+            top: 10px;
+            left: 40px;
+            right: 30px;
+            height: 72px;
             justify-content: space-between;
             align-items: center;
+            position: fixed;
+
+            
             
         }
         .container1{
@@ -324,12 +331,26 @@
         .background{
             font-family: Roboto Mono;
             font-size: 15px;
+            color: white;
             border: none;
             border-radius: 50px;
             margin-left: 20px;
             padding: 13px;
-            
+            background: linear-gradient( 
+                135deg,
+                rgba(149, 75, 14, 0.85),
+                rgba(77, 41, 7, 0.7),
+                rgba(209, 110, 4, 0.6),
+                rgba(80, 40, 10, 0.8));
+            background-size: 200% 100%;
+            background-position: 0 0;
+            cursor: pointer;
+            transition:background-position 0.4s ease-out,
+            box-shadow 0.4s ease-out,
+            transform 0.3s ease-out,
+            border 0.4s ease-in-out;
 
+        
         }
         .moon{
             width:20px
@@ -360,12 +381,14 @@
             display: flex;
             justify-content: center;
 
+
             
         }    
         #timer-display{
             color: white;
-            margin-bottom: 40px;
+            margin-bottom: 70px;
             font-size: 50px;
+            margin-top: 110px;
         }
         .start{
             background: linear-gradient( 
@@ -423,9 +446,12 @@
             background-size: 200% 100%;
             background-position: 0 0;
             cursor: pointer;
+           
+
 
         }
-        .start:hover, .stop:hover, .reset:hover{
+     
+        .start:hover, .stop:hover, .reset:hover,.background:hover{
             background-position: 100% 0 ;
             box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
             font-weight: 600;
@@ -443,6 +469,14 @@
                 background-position 0.4s ease-out,
                 box-shadow 0.4s ease-out,
                 transform 0.3s ease-out;
+
+        }
+      
+        .start:active, .stop:active, .reset:active,.background:active{
+            outline: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 0 rgba(255,255,255,0);
+            transform: scale(0.95);
+
 
         }
         .statistics{
