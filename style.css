@@ -12,6 +12,48 @@
             padding-bottom: 100px;
             transition: background-image 0.5s ease-in-out;
         }
+        body.theme1 .theme-btn{ 
+            background: 
+            linear-gradient( 
+                135deg,
+                rgba(149, 75, 14, 0.85),
+                rgba(77, 41, 7, 0.7),
+                rgba(209, 110, 4, 0.6),
+                rgba(80, 40, 10, 0.8));
+
+        }
+        body.theme2 .theme-btn{
+            background: 
+            linear-gradient( 
+                135deg,
+                rgba(57, 14, 149, 0.878),
+                rgba(123, 14, 107, 0.7),
+                rgba(11, 4, 209, 0.6),
+                rgba(101, 6, 94, 0.8));
+
+        }
+        body.theme1 .delete-btn{
+            background: 
+            linear-gradient( 
+                135deg,
+                rgba(255, 0, 144, 0.878),
+                rgba(255, 0, 0, 0.7),
+                rgba(255, 0, 93, 0.6),
+                rgba(255, 0, 238, 0.8));
+
+
+        }
+        body.theme2 .delete-btn{
+            background: 
+            linear-gradient( 
+                135deg,
+                rgba(72, 255, 0, 0.878),
+                rgba(26, 255, 0, 0.7),
+                rgba(51, 255, 0, 0.6),
+                rgba(26, 255, 0, 0.8));
+        }
+        
+
         body::before {
             content: "";
             position: fixed;
@@ -182,12 +224,7 @@
             font-size: 17px;
         }
         .add{
-            background: linear-gradient( 
-                135deg,
-                rgba(149, 75, 14, 0.85),
-                rgba(77, 41, 7, 0.7),
-                rgba(209, 110, 4, 0.6),
-                rgba(80, 40, 10, 0.8));
+            
             border: none;
             border-radius: 30px;
             color: white;
@@ -315,6 +352,7 @@
         }
         
         .delete-btn {
+       
             border: none;
             border-radius: 30px;
             color: white;
@@ -379,12 +417,6 @@
             border-radius: 50px;
             margin-left: 20px;
             padding: 13px;
-            background: linear-gradient( 
-                135deg,
-                rgba(149, 75, 14, 0.85),
-                rgba(77, 41, 7, 0.7),
-                rgba(209, 110, 4, 0.6),
-                rgba(80, 40, 10, 0.8));
             background-size: 200% 100%;
             background-position: 0 0;
             cursor: pointer;
@@ -434,12 +466,7 @@
             margin-top: 110px;
         }
         .start{
-            background: linear-gradient( 
-                135deg,
-                rgba(149, 75, 14, 0.85),
-                rgba(77, 41, 7, 0.7),
-                rgba(209, 110, 4, 0.6),
-                rgba(80, 40, 10, 0.8));
+           
             border: none;
             border-radius: 30px;
             color: white;
@@ -454,12 +481,7 @@
 
         }
         .stop{
-            background: linear-gradient( 
-                135deg,
-                rgba(149, 75, 14, 0.85),
-                rgba(77, 41, 7, 0.7),
-                rgba(209, 110, 4, 0.6),
-                rgba(80, 40, 10, 0.8));
+           
             border: none;
             border-radius: 30px;
             color: white;
@@ -474,12 +496,7 @@
         }
     
         .reset{
-            background: linear-gradient( 
-                135deg,
-                rgba(149, 75, 14, 0.85),
-                rgba(77, 41, 7, 0.7),
-                rgba(209, 110, 4, 0.6),
-                rgba(80, 40, 10, 0.8));
+           
             border: none;
             border-radius: 30px;
             color: white;
