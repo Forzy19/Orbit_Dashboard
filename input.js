@@ -154,7 +154,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load stats when page starts
         updateStats();
         updatetimerdisplay();
-        
+        const backgroundBtn = document.querySelector('.background');
+        let isFirstBackground = localStorage.getItem('isFirstBackground');
+        if (isFirstBackground === null) {
+            isFirstBackground = true;
+        }
+        else{
+            isFirstBackground = JSON.parse(isFirstBackground);
+        }
+            
+        function applyBackground() {
+            const image1 = "url('cosmic-symmetry-3840x2160-20464.jpg')";
+            const image2 = "url('alt_background.jpg')";
+            if (isFirstBackground) {
+                document.body.style.backgroundImage = `${image1}`;
+            } else {
+                document.body.style.backgroundImage = `${image2}`;
+            }
+        }
+        applyBackground();
+        backgroundBtn.addEventListener('click', () => {
+            isFirstBackground = !isFirstBackground;
+            localStorage.setItem('isFirstBackground', JSON.stringify(isFirstBackground));
+            applyBackground();
+        });
 
 
         
