@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             taskDiv.innerHTML = `<span class="point"><strong>•</strong> ${taskText}</span>`;
             const deleteBtn = document.createElement('button');
             deleteBtn.textContent = 'Delete';
-            deleteBtn.classList.add('delete-btn');
+            deleteBtn.classList.add('delete-btn theme-btn');
             deleteBtn.addEventListener('click', () => {
                 taskDiv.remove();
                 saveTasks(); // Update localStorage after deletion
