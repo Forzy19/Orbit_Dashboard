@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
         function applyBackground() {
             const image1 = "url('cosmic-symmetry-3840x2160-20464.jpg')";
-            const image2 = "url('alt_background.jpg')";
+            const image2 = "url('3334896.jpg')";
             if (isFirstBackground) {
                 document.body.style.backgroundImage = `${image1}`;
             } else {
