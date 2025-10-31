@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
         function applyBackground() {
             const image1 = "url('cosmic-symmetry-3840x2160-20464.jpg')";
-            const image2 = "url('3334896.jpg')";
+            const image2 = "url('smooth-wave-gradient-mesh-background-abstract-design-illustration-on-soft-yellow-dark-orange-black-vibrant-blend-template-free-vector.jpg')";
             if (isFirstBackground) {
                 document.body.style.backgroundImage = `${image1}`;
 
