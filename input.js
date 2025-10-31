@@ -170,8 +170,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const image2 = "url('3334896.jpg')";
             if (isFirstBackground) {
                 document.body.style.backgroundImage = `${image1}`;
+                document.body.classList.remove('theme2');
+                document.body.classList.add('theme1');
+
             } else {
                 document.body.style.backgroundImage = `${image2}`;
+                document.body.classList.remove('theme1');
+                document.body.classList.add('theme2');
             }
         }
         applyBackground();
