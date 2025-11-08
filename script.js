@@ -10,8 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const startBtn = document.querySelector('.start');
         const stopBtn = document.querySelector('.stop');
         const resetBtn = document.querySelector('.reset');
-        const timerDisplay = document.getElementById('timer-display');
         const mybox = document.getElementById('mybox');
+        const dailytime = document.getElementById('list1');
+        const weektime = document.getElementById('list2');
         let timerInterval = null;
         let starttime = null;
         let elapsedTime = 0; 
@@ -38,6 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const timerelement = document.getElementById('timer-display');
             if (timerelement) {
             timerelement.textContent =`${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;}
+        }
+        function updatestats(){
+            dailytime.innerHTML=`Total Time today:${totalTimeToday}`
+            weektime.innerHTML=`Total Time of the week:${totalTimeToday}`
+
         }
         function saveTasks() {
             const tasks = [];
@@ -133,12 +139,14 @@ document.addEventListener('DOMContentLoaded', () => {
             timerInterval = null;
             const previousTime = taskTimes[selectedtask.name] || 0;
             const newTotal = previousTime + elapsedTime;
+            totalTimeToday = totalTimeToday + newTotal;
              // Save total before resetting
             taskTimes[selectedtask.name] = newTotal;
             localStorage.setItem('task_times', JSON.stringify(taskTimes));
             // Reset timer display
             elapsedTime = 0;
             updatetimerdisplay();
+            updatestats();
             if (selectedtask.element) {
                 selectedtask.element.textContent = `${selectedtask.name}: ${newTotal}s`;
             }
@@ -146,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load stats when page starts
         updatetimerdisplay();
+        updatestats();
         const backgroundBtn = document.querySelector('.background');
         let isFirstBackground = localStorage.getItem('isFirstBackground');
         if (isFirstBackground === null) {
