@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('name-modal');
         const nameInput = document.getElementById('name-input');
@@ -13,9 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const stopBtn = document.querySelector('.stop');
         const resetBtn = document.querySelector('.reset');
         const timerDisplay = document.getElementById('timer-display');
+        const mybox = document.getElementById('mybox');
         let timerInterval = null;
+        let starttime = null;
         let elapsedTime = 0; 
         let username='';
+        let selectedtask= null;
+        let taskTimes = JSON.parse(localStorage.getItem('task_times')) || {};
         const storage = {
                 get: (key) => {
                     const item = localStorage.getItem(key);
@@ -33,11 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
             let hrs = Math.floor(elapsedTime / 3600);
             let mins = Math.floor((elapsedTime % 3600) / 60);
             let secs = elapsedTime % 60;
-            timerDisplay.textContent = `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
-        function updateStats() {
-            const box3 = document.querySelector('.box3 ul');
-            box3.innerHTML = `<li>Total time today: ${totalTimeToday}s</li><li>Total time spent this week: ${totalTimeToday}s</li>`;
+            const timerelement = document.getElementById('timer-display');
+            if (timerelement) {
+            timerelement.textContent =`${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;}
         }
         function saveTasks() {
             const tasks = [];
@@ -49,39 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
         function loadTasks() {
             const tasks = storage.get('task_list') || [];
             tasks.forEach((taskText) => {
-                createTaskElement(taskText);
+                taskmaker(taskText);
             });
         }
-        function createTaskElement(taskText) {
-            const taskDiv = document.createElement('div');
-            taskDiv.classList.add('task');
-            taskDiv.innerHTML = `<span class="point"><strong>•</strong> ${taskText}</span>`;
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = 'Delete';
-            deleteBtn.classList.add('delete-btn');
-            deleteBtn.classList.add('theme-btn');
-
-            deleteBtn.addEventListener('click', () => {
-                taskDiv.remove();
-                saveTasks(); // Update localStorage after deletion
-            });
-            taskDiv.appendChild(deleteBtn);
-            taskContainer.appendChild(taskDiv);
-        }
-
-
         function addtask(){
             const taskText = taskInput.value.trim();
             if (taskText === '') {
                 alert('Please enter a task!');
                 return;
             }
-            createTaskElement(taskText);
+            taskmaker(taskText);
             taskInput.value = '';
             saveTasks();
         }
-
-        
         let totalTimeToday = storage.get('total_time_today') || 0;
         function init(){
             const savedName = storage.get('dashboard_user');
@@ -129,30 +109,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.key === 'Enter') addtask();
         });
         startBtn.addEventListener('click', () => {
-                if (timerInterval) return; 
-                timerInterval = setInterval(() => {
-                    elapsedTime++;
-                    updatetimerdisplay();
-                    }, 1000);
+            if(!selectedtask){
+                alert("Please select a task first");
+                return;
+            }
+            if (timerInterval) clearInterval(timerInterval); 
+            starttime = Date.now() - elapsedTime * 1000;
+            timerInterval = setInterval(() => {
+                const now = Date.now();
+                elapsedTime = Math.floor((now - starttime) / 1000);
+                updatetimerdisplay();
+            }, 1000);
         });
         stopBtn.textContent='Pause';
         stopBtn.addEventListener('click', () => {
-            if (!timerInterval) return;
+            if (!selectedtask) return;
             clearInterval(timerInterval);
             timerInterval = null;
         });
         resetBtn.addEventListener('click', () => {
+            if (!selectedtask) return;
             clearInterval(timerInterval);
             timerInterval = null;
-            totalTimeToday += elapsedTime;
-            storage.set('total_time_today', totalTimeToday);
+            const previousTime = taskTimes[selectedtask.name] || 0;
+            const newTotal = previousTime + elapsedTime;
+             // Save total before resetting
+            taskTimes[selectedtask.name] = newTotal;
+            localStorage.setItem('task_times', JSON.stringify(taskTimes));
+            // Reset timer display
             elapsedTime = 0;
             updatetimerdisplay();
-            updateStats();
+            if (selectedtask.element) {
+                selectedtask.element.textContent = `${selectedtask.name}: ${newTotal}s`;
+            }
         });
 
     // Load stats when page starts
-        updateStats();
         updatetimerdisplay();
         const backgroundBtn = document.querySelector('.background');
         let isFirstBackground = localStorage.getItem('isFirstBackground');
@@ -180,7 +172,52 @@ document.addEventListener('DOMContentLoaded', () => {
             applyBackground();
         });
 
+        function taskmaker(taskText){  
+            const para = document.createElement('p');
+            para.textContent = `${taskText}: ${taskTimes[taskText] || 0}s`;
+            para.classList.add('paragraph');
+            const selectbutton = document.createElement('button');
+            selectbutton.textContent='Select';
+            selectbutton.classList.add('select-btn');
+            selectbutton.addEventListener('click',()=>{
+                // Stop any running timer before switching
+                if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                }
+                document.querySelectorAll('.task').forEach(t=>t.classList.remove('selectedtask'));
+                taskDiv.classList.add('selectedtask');
+                selectedtask = { name: taskText, element: para };
+                elapsedTime = 0;
+                updatetimerdisplay();
+
+            })
+            const taskDiv = document.createElement('div');
+            taskDiv.classList.add('task');
+            taskDiv.innerHTML = `<span class="point"><strong>•</strong> ${taskText}</span>`;
+            const timerdisplay= document.createElement('p');
+            timerdisplay.classList.add('task-timer');
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.classList.add('delete-btn','theme-btn');
+            deleteBtn.addEventListener('click', () => {
+                clearInterval(timerInterval);
+                taskDiv.remove();
+                para.remove();
+                saveTasks(); // Update localStorage after deletion
+            });
+            const controls = document.createElement('div');
+            controls.classList.add('task-controls');
+            taskDiv.append( controls,selectbutton,deleteBtn);
+            taskContainer.appendChild(taskDiv);
+            mybox.append(para);
+
+
+
+        }
+
 
         
 
 })
+
